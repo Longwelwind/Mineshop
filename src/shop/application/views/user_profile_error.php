@@ -1,0 +1,1 @@
+<div class="errorbox returnbox"><span>Joueur introuvable</span></div>

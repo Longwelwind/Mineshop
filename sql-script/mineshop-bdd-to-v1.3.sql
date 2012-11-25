@@ -1,0 +1,1 @@
+ALTER TABLE  `shp_offers` ADD  `offer_order` INT NOT NULL DEFAULT  '0'

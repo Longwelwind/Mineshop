@@ -1,0 +1,1 @@
+ALTER TABLE  `shp_offers` ADD  `offer_deleted` INT NOT NULL DEFAULT  '0'

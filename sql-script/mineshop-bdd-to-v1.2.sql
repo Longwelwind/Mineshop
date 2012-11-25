@@ -1,0 +1,1 @@
+ALTER TABLE  `shp_offers` ADD  `offer_description` TEXT NOT NULL AFTER  `offer_name`;

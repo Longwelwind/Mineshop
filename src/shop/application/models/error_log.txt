@@ -1,0 +1,1 @@
+[11-Nov-2012 18:27:31 UTC] PHP Fatal error:  Call to undefined function file_gets_content() in /mnt/sites/www/clients/client317/web23/web/shop/application/models/version_model.php on line 23
