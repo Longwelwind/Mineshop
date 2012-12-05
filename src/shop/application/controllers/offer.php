@@ -96,7 +96,7 @@ class Offer extends CI_Controller
                 $userdata->user_count_tokens = $userdata->user_count_tokens - $offer->offer_price;
                 $this->usermanager->setUserdata($userdata, $userdata->user_id);
                 // On log l'achat dans l'historique
-                $this->offer_model->addOfferHistory($offer->offer_id, time(), $userdata->user_id);
+                $this->offer_model->addOfferHistory($offer->offer_id, time(), $userdata->user_id, $offer->offer_price);
                 $this->data["goodError"] = "Vous avez acheté \"" . $offer->offer_name . "\" pour " . $offer->offer_price . " tokens.";
               } else {
                 $this->data["error"] = "Une erreur est survenu durant l'achat, veuillez réessayez plus tard.";

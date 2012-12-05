@@ -23,7 +23,7 @@ if (isset($goodError)) { ?>
       ?>
       <tr>
         <td><?php echo date("G:i à j/n/Y", $transaction->offer_history_time); ?></td>
-        <td><?php echo $offer->offer_price; ?> tokens</td>
+        <td><?php echo $transaction->offer_history_price; ?> tokens</td>
         <td><?php echo $offer->offer_name; ?></td>
       </tr>
       <?php

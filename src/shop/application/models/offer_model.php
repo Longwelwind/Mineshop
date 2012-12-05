@@ -135,9 +135,9 @@ LIMIT 0 , 10")->result();
   
   private $tableOffersHistory = "shp_offers_history";
   
-  public function addOfferHistory($offer_id, $time, $user_id) {
-    return $this->db->query("INSERT INTO " . $this->tableOffersHistory . "(offer_id, offer_history_time, user_id) VALUES(?, ?, ?)",
-                                      array($offer_id, $time, $user_id));
+  public function addOfferHistory($offer_id, $time, $user_id, $price) {
+    return $this->db->query("INSERT INTO " . $this->tableOffersHistory . "(offer_id, offer_history_time, user_id, offer_history_price) VALUES(?, ?, ?, ?)",
+                                      array($offer_id, $time, $user_id, $price));
   }
   
   public function hasAlreadyBought($offer_id, $user_id) {
