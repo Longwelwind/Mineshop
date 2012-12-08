@@ -85,7 +85,7 @@ class Offer extends CI_Controller
                 }
               }
               
-              if ($allConnectionsAccepted) {              
+              if ($allConnectionsAccepted) {
                 foreach($serversWebsend AS $websend) {
                   foreach($this->data["offer"]->elements AS $element) {
                     $element->complete($websend, $this->usermanager->getActualUserdata());

@@ -1,5 +1,5 @@
 <?php
-ob_start();
+//ob_start();
 ini_set('display_errors', true); 
 ini_set('log_errors', true); 
 ini_set('error_log', dirname(__FILE__) . '/error_log.txt');

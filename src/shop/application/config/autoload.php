@@ -52,7 +52,7 @@ $autoload['packages'] = array();
 |	$autoload['libraries'] = array('database', 'session', 'xmlrpc');
 */
 
-$autoload['libraries'] = array("layout", "session", "userManager", "database");
+$autoload['libraries'] = array("layout", "session", "userManager", "database", "configManager");
 
 
 /*
@@ -64,7 +64,7 @@ $autoload['libraries'] = array("layout", "session", "userManager", "database");
 |	$autoload['helper'] = array('url', 'file');
 */
 
-$autoload['helper'] = array("url");
+$autoload['helper'] = array("url", "array_manager_helper");
 
 
 /*

@@ -22,8 +22,10 @@ class Admin extends CI_Controller
                                       "link" => site_url("admin/servers_list")),
                                 array("label" => "Gérer les payements",
                                       "link" => site_url("admin/payements_list")),
-								array("label" => "Statistiques",
-                                      "link" => site_url("admin/stats")));
+                                array("label" => "Statistiques",
+                                      "link" => site_url("admin/stats")),
+                                array("label" => "Configuration",
+                                      "link" => site_url("admin/configuration")));
     $this->layout->view("admin_index", $this->data);
   }
   
@@ -217,8 +219,9 @@ class Admin extends CI_Controller
       $websend = new PHPsend();
       if ($test_connection == 1)
         $server->is_connected = (!$websend->PHPconnect($server->server_host, $server->server_password, $server->server_port));
-      $this->data["test_connection"] = $test_connection;
+      
     }
+    $this->data["test_connection"] = $test_connection;
     $this->layout->view("admin_servers_list", $this->data);
   }
   
@@ -298,13 +301,28 @@ WHERE o.offer_category_id =?", array($category_id))->result();
     $this->version($version);
   }
   
+  public function configuration() {
+  
+    if (isset($_POST["shop_title"])) {
+      // On fait la liste des clés _POST qu'on accepte
+      $acceptedKeys = array("shop_title", "shop_title_link", "shop_logo", "home_page");
+      $datas = simple_filter_array($acceptedKeys, $_POST);
+      //var_dump($datas);
+      foreach ($datas AS $keyData => $keyValue) {
+        $this->configmanager->setConfig($keyData, $keyValue);
+      }
+      $this->data["goodError"] = "Configuration modifié !";
+    }
+    $this->layout->view("admin_config", $this->data);
+  }
+  
   public function stats() {
   $this->load->model("offer_model");
   $this->load->model("payement_model");
   ini_set('display_errors', 1); 
-ini_set('log_errors', 1); 
-ini_set('error_log', dirname(__FILE__) . '/error_log.txt'); 
-error_reporting(E_ALL);
+  ini_set('log_errors', 1); 
+  ini_set('error_log', dirname(__FILE__) . '/error_log.txt'); 
+  error_reporting(E_ALL);
 	// On donne la liste des offres qui ont rapportés
   $this->data["offers_list"] = $this->offer_model->getTotalTokensWonPerOffer();
   $this->data["payements_list"] = $this->payement_model->getTotalUsedPerPayement();

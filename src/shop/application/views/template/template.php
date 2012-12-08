@@ -7,14 +7,14 @@ if ($this->usermanager->isAuthenticated())
 <html>
   <head>
       <meta charset="utf-8" />
-      <title>Boutique <?php echo $globalConfig["name_index_link"]; ?></title>
+      <title>Boutique <?php echo $this->configmanager->getConfig("shop_title"); ?></title>
       <link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>style.css" media="screen" />
       <SCRIPT LANGUAGE="Javascript" SRC="<?php echo base_url(); ?>script.js"> </SCRIPT>
   </head>
   <body>
     <div class="navbar">
       <div class="sitebox" style="float:left;">
-        <div class="name"><a style="color: inherit; decoration: none;" href="<?php echo $globalConfig["url_index_link"]; ?>"><?php echo $globalConfig["name_index_link"]; ?></a></div>
+        <div class="name"><a style="color: inherit; decoration: none;" href="<?php echo $this->configmanager->getConfig("shop_title_link"); ?>"><?php echo $this->configmanager->getConfig("shop_title"); ?></a></div>
         <div class="links">
           <span class="elements"><a href="<?php echo site_url("accueil"); ?>">Accueil</a></span>
           <span class="elements"><a href="<?php echo site_url("offer"); ?>">Boutique</a></span>
@@ -41,7 +41,7 @@ if ($this->usermanager->isAuthenticated())
       </div>
     </div>
     <div class="logo element">
-      <img src="<?php echo $globalConfig["logo_url"]; ?>" />
+      <img src="<?php echo $this->configmanager->getConfig("shop_logo"); ?>" />
     </div>
     <div class="body element">
       <?php echo $include; ?>
