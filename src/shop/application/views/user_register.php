@@ -1,7 +1,7 @@
 ﻿<h1>Inscription</h1>
 <hr />
 <?php if (isset($error)) {
-  ?><div><?php echo $error; ?></div><?php
+  ?><div class="errorbox returnbox"><span><?php echo $error; ?></span></div><?php
 }?>
 <div>
   <form method="POST">
@@ -19,6 +19,15 @@
       </tr>
       <tr>
         <td class="leftcellule">Email:</td><td><input name="email"></td>
+      </tr>
+      <tr>
+        <td class="leftcellule"><img style="border: 1px grey solid;padding: 2px;border-radius: 4px 4px;" id="captcha" src="<?php echo base_url(); ?>libraries/securimage/securimage_show.php" alt="CAPTCHA Image" /></td>
+        <td>Écrivez ce que vous voyez:<br />
+            <input type="text" name="captcha_code" size="10" maxlength="6" /><br />
+            <a style="font-size: 10px;" href="#" onclick="document.getElementById('captcha').src = '<?php echo base_url(); ?>libraries/securimage/securimage_show.php?' + Math.random(); return false">
+            Autre image ?
+            </a>
+        </td>
       </tr>
     <tr><td></td><td><input type="submit"></td></tr>
   </form>
