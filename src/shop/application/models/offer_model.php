@@ -5,6 +5,7 @@ require("offer_element/groupManagerPromoteElement.php");
 require("offer_element/giveItemElement.php");
 require("offer_element/giveXpElement.php");
 require("offer_element/executeCommandElement.php");
+require("offer_element/executeSQLQueryElement.php");
 
 class Offer_model extends CI_Model
 {
@@ -95,7 +96,9 @@ LIMIT 0 , 10")->result();
                                     4 => array("class" => "giveXpElement",
                                                "args" => "[SommeXp]"),
                                     5 => array("class" => "executeCommandElement",
-                                               "args" => "[Command];(Description)"));
+                                               "args" => "[Command];(Description)"),
+                                    6 => array("class" => "executeSQLQueryElement",
+                                               "args" => "[Query];(Description)"));
   
   public function getElementsByOfferId($offer_id) {
     $results = $this->db->query("SELECT * FROM " . $this->tableElements . " WHERE offer_id = ?", array($offer_id))->result_array();
