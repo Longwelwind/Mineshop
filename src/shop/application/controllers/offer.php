@@ -1,5 +1,5 @@
 <?php
-require("websend.php");
+require("serverlink.php");
 
 class Offer extends CI_Controller
 {
@@ -74,12 +74,13 @@ class Offer extends CI_Controller
               $results = $this->server_model->getAllServers();
               $allConnectionsAccepted = true;
               $serversWebsend = array();
+               
               foreach ($results AS $server) {
                 if ($server->server_active == 1) {
-                  $websend = new PHPsend();
+                  $websend = new ServerLink();
                   $serversWebsend[] = $websend;
                   //echo $websend->PHPconnect($server->server_host, $server->server_password, $server->server_port);
-                  if ($websend->PHPconnect($server->server_host, $server->server_password, $server->server_port)) {
+                  if ($websend->connect($server->server_host, $server->server_password, $server->server_port) > 0) {
                     $allConnectionsAccepted = false;
                   }
                 }
@@ -90,12 +91,14 @@ class Offer extends CI_Controller
                   foreach($this->data["offer"]->elements AS $element) {
                     $element->complete($websend, $this->usermanager->getActualUserdata());
                   }
-                  $websend->PHPdisconnect();
+                  $websend->disconnect();
                 }
+                
                 // On débite l'argent
                 $userdata->user_count_tokens = $userdata->user_count_tokens - $offer->offer_price;
                 $this->usermanager->setUserdata($userdata, $userdata->user_id);
                 // On log l'achat dans l'historique
+                
                 $this->offer_model->addOfferHistory($offer->offer_id, time(), $userdata->user_id, $offer->offer_price);
                 $this->data["goodError"] = "Vous avez acheté \"" . $offer->offer_name . "\" pour " . $offer->offer_price . " tokens.";
               } else {

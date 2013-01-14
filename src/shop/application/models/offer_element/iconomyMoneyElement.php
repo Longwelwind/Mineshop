@@ -11,7 +11,7 @@ class IconomyMoneyElement extends Element
   }
   
   public function complete($websend, $userdata) {
-    $websend->PHPcommand("money give " . $userdata->user_name . " " . $this->rewardMoney);
+    $websend->command("money give " . $userdata->user_name . " " . $this->rewardMoney);
   }
   
   public function getExplainString() {

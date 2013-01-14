@@ -1,5 +1,5 @@
 <?php
-require("websend.php");
+require("serverlink.php");
 
 class Admin extends CI_Controller
 {
@@ -216,9 +216,11 @@ class Admin extends CI_Controller
     $this->data["listServers"] = $this->server_model->getAllServers();
     // On essaie la connection sur tous les serveurs et on leur ajoute une propriété "is_connected"
     foreach ($this->data["listServers"] AS &$server) {
-      $websend = new PHPsend();
-      if ($test_connection == 1)
-        $server->is_connected = (!$websend->PHPconnect($server->server_host, $server->server_password, $server->server_port));
+      $websend = new ServerLink();
+      if ($test_connection == 1) {
+        $server->is_connected = ($websend->connect($server->server_host, $server->server_password, $server->server_port) == 0);
+        $websend->disconnect();
+      }
       
     }
     $this->data["test_connection"] = $test_connection;

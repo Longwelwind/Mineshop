@@ -11,7 +11,7 @@ class giveXpElement extends Element
   }
   
   public function complete($websend, $userdata) {
-    $websend->PHPcommand("cdplan " . $userdata->user_name . " xp give " . $userdata->user_name . " " . $this->number);
+    $websend->command("cdplan " . $userdata->user_name . " xp give " . $userdata->user_name . " " . $this->number);
   }
   
   public function getExplainString() {

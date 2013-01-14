@@ -11,8 +11,8 @@ class groupManagerPromoteElement extends Element
   }
   
   public function complete($websend, $userdata) {
-    $websend->PHPcommand("cdplan " . $userdata->user_name . " manuadd " . $userdata->user_name . " " . $this->group);
-    $websend->PHPcommand("cdplan " . $userdata->user_name . " mansave");
+    $websend->command("cdplan " . $userdata->user_name . " manuadd " . $userdata->user_name . " " . $this->group);
+    $websend->command("cdplan " . $userdata->user_name . " mansave");
   }
   
   public function getExplainString() {

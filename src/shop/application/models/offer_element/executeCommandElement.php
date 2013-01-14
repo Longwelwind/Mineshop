@@ -14,7 +14,7 @@ class executeCommandElement extends Element
   }
   
   public function complete($websend, $userdata) {
-    $websend->PHPcommand("cdplan " . $userdata->user_name . " " . str_replace("{PLAYER}", $userdata->user_name, $this->command));
+    $websend->command("cdplan " . $userdata->user_name . " " . str_replace("{PLAYER}", $userdata->user_name, $this->command));
   }
   
   public function getExplainString() {
