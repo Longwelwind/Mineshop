@@ -164,4 +164,4 @@ pip-log.txt
 
 # Ptibiscuit add
 *.zip
-src\shop\img\global_chart.png
+src/shop/img/global_chart.png
