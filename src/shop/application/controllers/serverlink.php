@@ -14,7 +14,12 @@ class ServerLink {
   public function connect($host, $mdp, $port) {
     //return $this->phpsend->PHPconnect($host, $mdp, $port);
     $this->jsonapi = new JSONAPI($host, $port, "mineshop", $mdp, "salt");
-    return 0;
+    $result = $this->jsonapi->call("getPlayerLimit");
+    if ($result != NULL) {
+      return 0;
+    } else {
+      return 1;
+    }
   }
   
   public function command($command) {
