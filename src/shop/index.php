@@ -1,9 +1,8 @@
 <?php
-//ob_start();
-ini_set('display_errors', true); 
-ini_set('log_errors', true); 
+ob_start();
+ini_set('display_errors', 1);
 ini_set('error_log', dirname(__FILE__) . '/error_log.txt');
-error_reporting(E_ALL);
+
 include("global-config.php");
 
 /* Non-official libraries */
