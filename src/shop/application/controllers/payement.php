@@ -103,7 +103,11 @@ class Payement extends CI_Controller
   }
   
   public function callback_starpass($type_id = 0) {
-    $payementOffer = $this->payement_model->getPayementById($type_id);
+    
+    if(isset($_POST['DATAS'])) $datas = $_POST['DATAS'];
+    // Le champ data contient L'id de l'offre
+    $type_id = $datas;
+    $payementOffer = $this->payement_model->getPayementById($datas);
     // Déclaration des variables
     $ident=$idp=$ids=$idd=$codes=$code1=$code2=$code3=$code4=$code5=$datas='';
     $dataAPI = $payementOffer->getDataAPI();
@@ -119,7 +123,7 @@ class Payement extends CI_Controller
     if(isset($_POST['code5'])) $code5 = ";".$_POST['code5'];
     $codes=$code1.$code2.$code3.$code4.$code5;
     // On récupère le champ DATAS
-    if(isset($_POST['DATAS'])) $datas = $_POST['DATAS'];
+    
     // On encode les trois chaines en URL
     $ident=urlencode($ident);
     $codes=urlencode($codes);

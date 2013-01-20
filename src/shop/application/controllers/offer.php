@@ -74,7 +74,6 @@ class Offer extends CI_Controller
               $results = $this->server_model->getAllServers();
               $allConnectionsAccepted = true;
               $serversWebsend = array();
-               
               foreach ($results AS $server) {
                 if ($server->server_active == 1) {
                   $websend = new ServerLink();
@@ -93,12 +92,10 @@ class Offer extends CI_Controller
                   }
                   $websend->disconnect();
                 }
-                
                 // On débite l'argent
                 $userdata->user_count_tokens = $userdata->user_count_tokens - $offer->offer_price;
                 $this->usermanager->setUserdata($userdata, $userdata->user_id);
                 // On log l'achat dans l'historique
-                
                 $this->offer_model->addOfferHistory($offer->offer_id, time(), $userdata->user_id, $offer->offer_price);
                 $this->data["goodError"] = "Vous avez acheté \"" . $offer->offer_name . "\" pour " . $offer->offer_price . " tokens.";
               } else {

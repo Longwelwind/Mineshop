@@ -14,7 +14,7 @@ class PayementStarpass extends PayementType
   public function displayPayementPage($user) {
     ?>
     <div id="starpass_<?php echo $this->dataAPI[1]; ?>"></div>
-    <script type="text/javascript" src="http://script.starpass.fr/script.php?idd=<?php echo $this->dataAPI[1]; ?>&amp;verif_en_php=1&amp;datas=<?php echo $user->user_id; ?>">
+    <script type="text/javascript" src="http://script.starpass.fr/script.php?idd=<?php echo $this->dataAPI[1]; ?>&amp;verif_en_php=1&amp;datas=<?php echo $this->payement_id; ?>">
     </script>
     <noscript>Veuillez activer le Javascript de votre navigateur s'il vous pla&icirc;t.<br />
     <a href="http://www.starpass.fr/">Micro Paiement StarPass</a>
