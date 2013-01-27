@@ -3,7 +3,7 @@
 
 class Version_model extends CI_Model
 {
-  private $url = "http://ptibiscuit.pulseheberg.org/Mineshop/";
+  private $url = "http://ptibiscuit.net/Mineshop/";
 
   public function getNextVersionData($version = "") {
     if ($version == "") {
