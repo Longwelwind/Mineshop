@@ -30,7 +30,7 @@ if ($this->usermanager->isAuthenticated())
       <div class="userbox" style="float: right;">
         <?php if ($this->usermanager->isAuthenticated()) {
           ?>
-          <span class="hellomessage">Bonjour <a class="links" href="<?php echo site_url("user/profile/" . $userdata->user_name); ?>"><strong><?php echo $userdata->user_name; ?></strong></a></span> | 
+          <span class="hellomessage">Bonjour <a class="links" href="<?php echo site_url("user/profile/" . $userdata->user_name); ?>"><strong><?php echo htmlspecialchars($userdata->user_name); ?></strong></a></span> | 
 		  <?php echo $userdata->user_count_tokens; ?> <img src="<?php echo base_url(); ?>img/coin.png"> | <a class="links" href="<?php echo site_url("user/deco"); ?>">Déconnexion</a>
           <?php
         } else { ?>

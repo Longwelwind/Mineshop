@@ -25,9 +25,9 @@ foreach ($usersList AS $user) {
   ?>
   <tr>
     <form action="<?php echo site_url("admin/user_update/" . $user->user_id); ?>" method="POST">
-    <td><input name="user_name" value="<?php echo $user->user_name; ?>"></td>
+    <td><input name="user_name" value="<?php echo htmlspecialchars($user->user_name); ?>"></td>
     <td><input name="user_count_tokens" value="<?php echo $user->user_count_tokens; ?>" style="width: 50px;"> <img src="<?php echo base_url(); ?>img/coin.png"></td>
-    <td><input name="user_email" value="<?php echo $user->user_email; ?>"></td>
+    <td><input name="user_email" value="<?php echo htmlspecialchars($user->user_email); ?>"></td>
     <td><input name="user_register_time" value="<?php echo $user->user_register_time; ?>"></td>
     <td><input name="user_is_admin" type="checkbox" <?php if ($user->user_is_admin) { ?>checked="checked"<?php }  ?>></td>
     <td><input class="button" type="submit"></td>

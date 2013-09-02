@@ -1,4 +1,4 @@
-<h1>Profil de <?php echo $userProfile->user_name; ?></h1>
+<h1>Profil de <?php echo htmlspecialchars($userProfile->user_name); ?></h1>
 <hr>
 <?php
 date_default_timezone_set("Europe/Berlin");
