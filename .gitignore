@@ -166,3 +166,4 @@ pip-log.txt
 *.zip
 src/shop/img/global_chart.png
 src/shop/application/config/foreign_chars.php
+nbproject
