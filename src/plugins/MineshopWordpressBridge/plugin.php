@@ -22,7 +22,7 @@ function mineshopwb_register($user_id) {
   $userdata = get_userdata($user_id);
   $wpdb->insert("", array("user_name" => $userdata->user_login),
                     array("user_password" => md5($userdata->user_pass)),
-                    array("user_email" => $userdata->user_email)
+                    array("user_email" => $userdata->user_email),
                     array("%s", "%s", "%s"));
 }
 ?>
