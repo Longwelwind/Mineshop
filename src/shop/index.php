@@ -3,13 +3,43 @@ ob_start();
 ini_set('display_errors', 1);
 ini_set('error_log', dirname(__FILE__) . '/error_log.txt');
 
-include("global-config.php");
-
-/* Non-official libraries */
+/*
+ * Importing non-codeigniter libraries
+ */
 $base = "application/libraries/nolibraries/";
 include($base . "pChart/class/pData.class.php");
 include($base . "pChart/class/pDraw.class.php");
 include($base . "pChart/class/pImage.class.php");
+include("libraries/confighandler.class.php");
+ 
+/*
+ * Because of the new config system, we need to convert the global-config.php to config.txt if it doesn't exist
+ */
+if (!file_exists("config.txt") and file_exists("global-config.php")) {
+    include("global-config.php");
+    // We convert the configuration
+    $config = array("db_host" => $globalConfig["bdd_host"],
+                    "db_name" => $globalConfig["bdd_name"],
+                    "db_login" => $globalConfig["bdd_login"],
+                    "db_password" => $globalConfig["bdd_password"],
+                    "base_url" => $globalConfig["base_url"]);
+    
+    // We save the config
+    confighandler_setConfig("config.txt", $config);
+}
+
+/*
+ * If config.txt doesn't exist, the user must first use the install.php script
+ */
+if (!file_exists("config.txt")) {
+    ?>Veuillez d'abord aller sur l'adresse <a href="install.php"> d'installation</a><?php
+    exit();
+}
+
+/*
+ * Charging the configuration
+ */
+$globalConfig = confighandler_getConfig("config.txt");
 
 /*
  *---------------------------------------------------------------

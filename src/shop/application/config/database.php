@@ -48,10 +48,10 @@
 $active_group = 'default';
 $active_record = TRUE;
 global $globalConfig;
-$db['default']['hostname'] = $globalConfig["bdd_host"];
-$db['default']['username'] = $globalConfig["bdd_login"];
-$db['default']['password'] = $globalConfig["bdd_password"];
-$db['default']['database'] = $globalConfig["bdd_name"];
+$db['default']['hostname'] = $globalConfig["db_host"];
+$db['default']['username'] = $globalConfig["db_login"];
+$db['default']['password'] = $globalConfig["db_password"];
+$db['default']['database'] = $globalConfig["db_name"];
 $db['default']['dbdriver'] = 'mysql';
 $db['default']['dbprefix'] = '';
 $db['default']['pconnect'] = TRUE;
