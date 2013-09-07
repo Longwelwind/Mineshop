@@ -3,16 +3,18 @@
 
 class Version_model extends CI_Model
 {
-  private $url = "http://ptibiscuit.net/Mineshop/";
+  private $url = "http://192.95.11.149/Mineshop/";
 
   public function getNextVersionData($version = "") {
     if ($version == "") {
       $version = $this->getActualVersion();
     }
-    
-    $result = file_get_contents($this->url . "get_next_version.php?version=" . $version);
+    $result = @file_get_contents($this->url . "get_next_version.php?version=" . $version);
+    if ($result === FALSE)
+        return "SERVER_DOWN";
     $dataResult = explode(" ", $result);
     return $dataResult;
+    
   }
   
   public function getChangelog($version) {
