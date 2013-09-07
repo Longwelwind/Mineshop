@@ -18,7 +18,7 @@
             <div class="form-group">
                 <label class="control-label col-md-4">Confirmation du mot de passe:</label>
                 <div class="col-md-6">
-                    <input type="password" name="nickname" class="form-control">
+                    <input type="password" name="passwordBis" class="form-control">
                 </div>
             </div>
             <div class="form-group">
