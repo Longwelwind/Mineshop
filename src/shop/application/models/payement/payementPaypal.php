@@ -11,12 +11,12 @@ class PayementPaypal extends PayementType
     $this->dataAPI = explode("/", $data["payement_args"]);
   }
   
-  /*
-  0=>Somme
-  1=>UserAPI
-  2=>Mot de passe API
-  3=>SignatureAPI
-  */
+  /**
+   * 0=>Somme
+   * 1=>UserAPI
+   * 2=>Mot de passe API
+   * 3=>SignatureAPI
+   */
   
   public function getPrice() {
     return $this->price;

@@ -1,91 +1,90 @@
-﻿<h1>Gestion de l'offre "<?php echo $offer->offer_name; ?>"</h1>
-<hr />
-<script type="text/javascript">
-var elementTypes = array {
-  <?php echo $allTypesElement; ?>
-};
-</script>
-<?php
-if (isset($goodError)) { ?>
-  <div class="gooderrorbox returnbox"><span><?php echo $goodError; ?></span></div>
-  <?php
-}
-?>
-<table style="width: 98%;">
-  <tr>
-    <td>
-      <div class="box">
-        <div class="box_title">Caractéristiques:</div>
-        <form method="post" action="">
-          <strong>Description:</strong><br />
-          <textarea rows="5" cols="55" name="offer_description"><?php echo $offer->offer_description; ?></textarea><br />
-          <input type="hidden" name="offer_id" value="<?php echo $offer->offer_id; ?>"><input type="submit" />
-        </form>
-      </div>
-    </td>
-    <td style="vertical-align: top;">
-      <div class="box" style="width: 100%;">
-        <div class="box_title">Ajouter un élément</div>
-        <form method="post" action="<?php echo site_url("admin/create_element/" . $offer->offer_id); ?>">
-            <table>
-              <tr>
-                <td class="leftcellule">Type d'élément</td>
-                <td>
-                  <select name="element_type">
-                      <?php
-                      foreach($allTypesElement AS $elementTypeId => $elementType) {
-                        ?><option value="<?php echo $elementTypeId; ?>"><?php echo $elementType["class"]; ?></option><?php
-                      }
-                      ?>
-                  </select>
-                </td>
-              </tr>
-              <tr>
-                <td class="leftcellule">Args</td><td><input name="element_args"></td>
-              </tr>
-              <tr>
-                <td><input type="hidden" name="offer_id" value="<?php echo $offer->offer_id; ?>"></td><td><input type="submit" class="button"></td>
-              </tr>
-            </table>
-        </form>
-      </div>
-    </td>
-  </tr>
-</table>
-  <table class="datatable">
-    <tr>
-      <th>Type</th>
-      <th>Args requis</th>
-      <th>Args</th>
-      <th>#</th>
-      <th>#</th>
-    </tr>
-  <?php
-  foreach ($allElements AS $element) {
-    ?>
-    <tr>
-      <form action="<?php echo site_url("admin/update_element/" . $element->getId()); ?>" method="POST">
-        <td>
-          <select name="element_type">
-            <?php
-            foreach($allTypesElement AS $elementTypeId => $elementType) {
-             ?><option <?php if ($element->getTypeId() == $elementTypeId) {?>selected<?php } ?> value="<?php echo $elementTypeId; ?>"><?php echo $elementType["class"]; ?></option><?php
-           }
-           ?>
-          </select>
-        </td>
-        <td></td>
-        <td><input name="element_args" value="<?php echo implode(";", $element->getData()); ?>"></td>
-        <td><input class="button" type="submit"></td>
-      </form>
-      <td>
-        <form method="post" onSubmit="return (confirm('Êtes vous-sur de vouloir supprimer cette élément ?'))" action="<?php echo site_url("admin/delete_element/" . $offer->offer_id); ?>">
-          <input type="hidden" name="element_id" value="<?php echo $element->getId(); ?>">
-          <input class="button" type="submit" value="Supprimer">
-        </form>
-      </td>
-    </tr>
-    <?php
-  }
-  ?>
-  </table>
+<h2>Description de l'offre "<?php echo $offer->offer_name; ?>"</h2>
+
+<div class="row">
+    <div class="col-md-6">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h3 class="panel-title">Caractéristiques</h3>
+            </div>
+            <div class="panel-body">
+                <form method="post" action="">
+                    <label class="control-label">Description:</label><br />
+                    <textarea class="form-control" rows="5" cols="55" name="offer_description"><?php echo $offer->offer_description; ?></textarea><br />
+                    <input type="hidden" name="offer_id" value="<?php echo $offer->offer_id; ?>"><input class="btn btn-default" type="submit" />
+                </form>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-6">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h3 class="panel-title">Ajouter un élément</h3>
+            </div>
+            <div class="panel-body">
+                <form method="post" class="form-horizontal" action="<?php echo site_url("admin/create_element/" . $offer->offer_id); ?>">
+                    <div class="form-group">
+                        <label class="col-md-3 control-label">Type d'élément</label>
+                        <div class="col-md-9">
+                            <select name="element_type" class="form-control">
+                                <?php foreach($allTypesElement AS $elementTypeId => $elementType) { ?>
+                                    <option value="<?php echo $elementTypeId; ?>"><?php echo $elementType["class"]; ?></option>
+                                <?php } ?>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-md-3 control-label">Arguments</label>
+                        <div class="col-md-9">
+                            <input class="form-control" name="element_args">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-md-9 col-md-offset-3">
+                            <input type="hidden" name="offer_id" value="<?php echo $offer->offer_id; ?>"><button type="submit" class="btn btn-default">Valider</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-12">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h3 class="panel-title">Liste d'éléments</h3>
+            </div>
+            <div class="panel-body">
+                <table class="table table-stripped table-bordered table-condensed table-centered">
+                    <tr>
+                        <th>Type</th>
+                        <th>Args</th>
+                        <th></th>
+                        <th></th>
+                    </tr>
+                    <?php foreach ($allElements AS $element) { ?>
+                        <tr>
+                            <form action="<?php echo site_url("admin/update_element/" . $element->getId()); ?>" method="POST">
+                                <td>
+                                    <select class="form-control" name="element_type">
+                                        <?php foreach($allTypesElement AS $elementTypeId => $elementType) { ?>
+                                            <option <?php if ($element->getTypeId() == $elementTypeId) {?>selected<?php } ?> value="<?php echo $elementTypeId; ?>"><?php echo $elementType["class"]; ?></option>
+                                        <?php } ?>
+                                    </select>
+                                </td>
+                                <td><input class="form-control" name="element_args" value="<?php echo implode(";", $element->getData()); ?>"></td>
+                                <td><button class="btn btn-default" type="submit">Modifier</button></td>
+                            </form>
+                            <td>
+                                <form method="post" onSubmit="return (confirm('Êtes vous-sur de vouloir supprimer cette élément ?'))" action="<?php echo site_url("admin/delete_element/" . $offer->offer_id); ?>">
+                                    <input type="hidden" name="element_id" value="<?php echo $element->getId(); ?>">
+                                    <button class="btn btn-danger" type="submit">Supprimer</button>
+                                </form>
+                            </td>
+                        </tr>
+                    <?php } ?>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>

@@ -43,7 +43,7 @@ class Offer extends CI_Controller
       if ($userdata->user_count_tokens < $offer->offer_price) {
         $this->data["errorPay"] = "Vous n'avez pas assez de tokens.";
       } else if ($offer->offer_time_required > 0 && (time() - $userdata->user_register_time) < $offer->offer_time_required) {
-        $this->data["errorPay"] = "Vous devez être ancien de " . $offer->offer_time_required / (60*60*24) . " jours pour acheter cette offre.";
+        $this->data["errorPay"] = "Vous devez avoir " . $offer->offer_time_required / (60*60*24) . " d'ancienneté pour acheter cette offre.";
       } else if ($offer->offer_offer_required > 0 && !$this->offer_model->hasAlreadyBought($offer->offer_offer_required, $userdata->user_id)) {
         $offerRequired = $this->offer_model->getOfferById($offer->offer_offer_required);
         $this->data["errorPay"] = "Vous devez d'abord acquérir l'offre \"" . $offerRequired->offer_name . "\" avant de pouvoir acheter celle-ci.";

@@ -1,38 +1,36 @@
-<h1>Description de l'offre "<?php echo $offer->offer_name; ?>"</h1>
-<hr />
-<?php
-if (isset($goodError)) { ?>
-  <div class="gooderrorbox returnbox"><span><?php echo $goodError; ?></span></div>
-  <?php
-}
-?>
-<?php
-if (isset($error)) { ?>
-  <div class="errorbox returnbox"><span><?php echo $error; ?></span></div>
-  <?php
-}
-?>
-<?php if (!empty($offer->offer_description)) { ?>
-      <div class="category_description description">
-        <?php echo $offer->offer_description; ?>
-      </div>
-<?php } ?>
-<strong>Prix:</strong> <?php echo $offer->offer_price; ?> <img src="<?php echo base_url(); ?>img/coin.png"><br />
-<div class="box" style="width: 40%;">
-  <div class="box_title">Contient:</div><br />
-  <table class="datatable" style="width: 400px;">
-  <tr><th>Element</th></tr>
-  <?php foreach ($offer->elements AS $element) { ?>
-    <tr><td><?php echo $element->getExplainString(); ?></td></tr>
-    <?php
-  }
-  ?>
-  </table>
-</div>
-<div style="height: 25px;">
-<?php if (isset($errorPay)) { ?>
-  <?php echo $errorPay; ?>
-<?php } else { ?>
-  <a class="buy_button button" href="<?php echo site_url("offer/buy/" . $offer->offer_id); ?>">ACHETER</a>
-<?php } ?>
+<h2><?php echo $offer->offer_name; ?></h2>
+<div class="row">
+    <div class="col-md-4 <?php if (empty($offer->offer_description)) { ?>col-md-offset-4<?php } ?>">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h3 class="panel-title">Que contient elle ?</h3>
+            </div>
+            <div class="panel-body">
+                <ul class='list-group'>
+                    <?php foreach ($offer->elements AS $element) { ?>
+                        <li class="list-group-item"><?php echo $element->getExplainString(); ?></li>
+                    <?php } ?>
+                </ul>
+                <div style="text-align: center;">
+                    <?php if (isset($errorPay)) { ?>
+                        <button class="btn btn-danger disabled"><?php echo $errorPay; ?></button>
+                    <?php } else { ?>
+                        <a class="btn btn-lg btn-success" href="<?php echo site_url("offer/buy/" . $offer->offer_id); ?>">ACHETER</a>
+                    <?php } ?>
+                </div>
+           </div>
+        </div>
+    </div>
+    <?php if (!empty($offer->offer_description)) { ?>
+        <div class="col-md-8">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h3 class="panel-title">Description</h3>
+                </div>
+                <div class="panel-body">
+                    
+                </div>
+            </div>
+        </div>
+    <?php } ?>
 </div>

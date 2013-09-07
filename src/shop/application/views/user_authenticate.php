@@ -1,27 +1,24 @@
-<h1>Se connecter à la boutique</h1>
-<hr />
-<?php
-if (isset($goodError)) { ?>
-  <div class="gooderrorbox returnbox"><span><?php echo $goodError; ?></span></div>
-  <?php
-}
-?>
-<?php
-if (isset($error)) { ?>
-  <div class="errorbox returnbox"><span><?php echo $error; ?></span></div>
-  <?php
-}
-?>
-
-<div>
-  <form method="POST">
-    <table class="tableform">
-      <tr>
-        <td class="leftcellule">Pseudo:</td><td><input type="text" name="nickname"></td>
-      </tr>
-      <tr>
-        <td class="leftcellule">Mot de passe:</td><td><input type="password" name="password"></td>
-      </tr>
-    <tr><td></td><td><input type="submit"></td></tr>
-  </form>
+<h2 class="col-md-offset-2">Se connecter à la boutique</h2>
+<div class="row">
+    <div class="col-md-offset-2 col-md-8 module">
+        <form class="form-horizontal" action="" method="post">
+            <div class="form-group">
+                <label class="col-md-3 control-label">Pseudo:</label>
+                <div class="col-md-6">
+                    <input class="form-control" name="nickname">
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-md-3 control-label">Mot de passe:</label>
+                <div class="col-md-6">
+                    <input class="form-control" type="password" name="password">
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-md-offset-3">
+                    <input type="submit" class="btn btn-default">
+                </div>
+            </div>
+        </form>
+    </div>
 </div>
