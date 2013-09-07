@@ -1,5 +1,0 @@
-db_host=localhost
-db_name=mineshop
-db_login=root
-db_password=
-base_url=http://localhost/mineshop/
