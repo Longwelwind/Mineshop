@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Serveur: localhost
--- G�n�r� le : Sam 24 Novembre 2012 � 20:15
+-- Généré le : Dim 27 Janvier 2013 à 12:48
 -- Version du serveur: 5.5.23
 -- Version de PHP: 5.3.11-1~dotdeb.0
 
@@ -14,6 +14,10 @@ SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
 /*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
 /*!40101 SET NAMES utf8 */;
+
+--
+-- Base de données: `c317ccweb`
+--
 
 -- --------------------------------------------------------
 
@@ -39,12 +43,12 @@ CREATE TABLE IF NOT EXISTS `shp_offers` (
   `offer_category_id` int(11) NOT NULL,
   `offer_name` varchar(255) NOT NULL,
   `offer_description` text NOT NULL,
-  `offer_order` int(11) NOT NULL DEFAULT '0',
   `offer_price` int(11) NOT NULL,
   `offer_is_unique` tinyint(1) NOT NULL,
   `offer_time_required` int(11) NOT NULL,
   `offer_offer_required` int(11) NOT NULL,
   `offer_can_pay_with_time` tinyint(1) NOT NULL,
+  `offer_order` int(11) NOT NULL DEFAULT '0',
   `offer_deleted` int(11) NOT NULL DEFAULT '0',
   PRIMARY KEY (`offer_id`)
 ) ENGINE=MyISAM  DEFAULT CHARSET=utf8;
@@ -87,6 +91,7 @@ CREATE TABLE IF NOT EXISTS `shp_offers_history` (
   `offer_id` int(11) NOT NULL,
   `offer_history_time` int(11) NOT NULL,
   `user_id` int(11) NOT NULL,
+  `offer_history_price` int(11) NOT NULL,
   PRIMARY KEY (`offer_history_id`)
 ) ENGINE=MyISAM  DEFAULT CHARSET=utf8;
 
@@ -119,6 +124,22 @@ CREATE TABLE IF NOT EXISTS `shp_payements_history` (
   `payement_offer_id` int(11) NOT NULL,
   PRIMARY KEY (`payement_id`)
 ) ENGINE=MyISAM  DEFAULT CHARSET=utf8;
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `shp_promotional_codes`
+--
+
+CREATE TABLE IF NOT EXISTS `shp_promotional_codes` (
+  `code_id` int(11) NOT NULL AUTO_INCREMENT,
+  `code_code` varchar(255) NOT NULL,
+  `code_type_id` int(11) NOT NULL,
+  `code_used` int(11) NOT NULL DEFAULT '0',
+  `code_user_executer` int(11) NOT NULL,
+  `code_time_executed` int(11) NOT NULL,
+  PRIMARY KEY (`code_id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
@@ -167,28 +188,3 @@ CREATE TABLE IF NOT EXISTS `shp_users` (
   `user_is_admin` tinyint(1) NOT NULL DEFAULT '0',
   PRIMARY KEY (`user_id`)
 ) ENGINE=MyISAM  DEFAULT CHARSET=utf8;
-
--- --------------------------------------------------------
-
---
--- Add the default entries
---
-
-INSERT INTO `shp_offers` (`offer_id`, `offer_category_id`, `offer_name`, `offer_description`, `offer_price`, `offer_is_unique`, `offer_time_required`, `offer_offer_required`, `offer_can_pay_with_time`, `offer_order`, `offer_deleted`) VALUES(1, 3, 'Pack d''objet', '', 50, 0, 0, 0, 0, 0, 0);
-INSERT INTO `shp_offers` (`offer_id`, `offer_category_id`, `offer_name`, `offer_description`, `offer_price`, `offer_is_unique`, `offer_time_required`, `offer_offer_required`, `offer_can_pay_with_time`, `offer_order`, `offer_deleted`) VALUES(2, 3, 'Premier rang Eclaireur', '', 40, 1, 0, 0, 0, 0, 0);
-INSERT INTO `shp_offers` (`offer_id`, `offer_category_id`, `offer_name`, `offer_description`, `offer_price`, `offer_is_unique`, `offer_time_required`, `offer_offer_required`, `offer_can_pay_with_time`, `offer_order`, `offer_deleted`) VALUES(3, 3, 'Deuxième rang Chevalier', '', 40, 1, 0, 2, 0, 0, 0);
-INSERT INTO `shp_offers` (`offer_id`, `offer_category_id`, `offer_name`, `offer_description`, `offer_price`, `offer_is_unique`, `offer_time_required`, `offer_offer_required`, `offer_can_pay_with_time`, `offer_order`, `offer_deleted`) VALUES(4, 3, 'Troisième rang Roi', '', 40, 1, 0, 3, 0, 0, 0);
-INSERT INTO `shp_offers` (`offer_id`, `offer_category_id`, `offer_name`, `offer_description`, `offer_price`, `offer_is_unique`, `offer_time_required`, `offer_offer_required`, `offer_can_pay_with_time`, `offer_order`, `offer_deleted`) VALUES(5, 3, 'Cadeau 1 mois ', '', 0, 1, 2592000, 0, 0, 0, 0);
-INSERT INTO `shp_offers` (`offer_id`, `offer_category_id`, `offer_name`, `offer_description`, `offer_price`, `offer_is_unique`, `offer_time_required`, `offer_offer_required`, `offer_can_pay_with_time`, `offer_order`, `offer_deleted`) VALUES(6, 3, 'Cadeau 3 mois', '', 0, 1, 5184000, 0, 0, 0, 0);
-
-INSERT INTO `shp_offers_elements` (`element_id`, `element_type`, `element_args`, `offer_id`) VALUES(1, 1, '64;Pierre;1', 1);
-INSERT INTO `shp_offers_elements` (`element_id`, `element_type`, `element_args`, `offer_id`) VALUES(2, 1, '5;Diamants;264', 1);
-INSERT INTO `shp_offers_elements` (`element_id`, `element_type`, `element_args`, `offer_id`) VALUES(3, 1, '1;Epee en Fer;267', 1);
-INSERT INTO `shp_offers_elements` (`element_id`, `element_type`, `element_args`, `offer_id`) VALUES(4, 1, '1;Cookie;357', 1);
-INSERT INTO `shp_offers_elements` (`element_id`, `element_type`, `element_args`, `offer_id`) VALUES(5, 3, 'Eclaireur', 2);
-INSERT INTO `shp_offers_elements` (`element_id`, `element_type`, `element_args`, `offer_id`) VALUES(6, 3, 'Chevalier', 3);
-INSERT INTO `shp_offers_elements` (`element_id`, `element_type`, `element_args`, `offer_id`) VALUES(7, 3, 'Roi', 4);
-INSERT INTO `shp_offers_elements` (`element_id`, `element_type`, `element_args`, `offer_id`) VALUES(8, 4, '500', 5);
-INSERT INTO `shp_offers_elements` (`element_id`, `element_type`, `element_args`, `offer_id`) VALUES(9, 2, '1500', 5);
-INSERT INTO `shp_offers_elements` (`element_id`, `element_type`, `element_args`, `offer_id`) VALUES(10, 4, '1500', 6);
-INSERT INTO `shp_offers_elements` (`element_id`, `element_type`, `element_args`, `offer_id`) VALUES(11, 2, '3000', 6);
