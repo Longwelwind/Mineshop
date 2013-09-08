@@ -78,7 +78,7 @@ if ($this->usermanager->isAuthenticated() and $userdata->user_is_admin) {
     </nav>
     <div class="container">
         <div class="row"  style="height:50px">
-            <div class="col-md-5">lo 
+            <div class="col-md-5">
                <img src="<?php echo $this->configmanager->getConfig("shop_logo"); ?>" />
             </div>
             <div class="col-md-7">
