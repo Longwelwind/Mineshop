@@ -11,6 +11,10 @@
                 <input class="form-control" name="shop_title_link" value="<?php echo $this->configmanager->getConfig("shop_title_link"); ?>" />
             </div>
             <div class="form-group">
+                <label>Url du logo:</label>
+                <input class="form-control" name="shop_logo" value="<?php echo $this->configmanager->getConfig("shop_logo"); ?>" />
+            </div>
+            <div class="form-group">
                 <label>Description de la boutique</label>
                 <textarea name="home_page" class="form-control" rows="4"><?php echo $this->configmanager->getConfig("home_page"); ?></textarea>
             </div>

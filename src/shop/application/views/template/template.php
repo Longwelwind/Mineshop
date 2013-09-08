@@ -14,7 +14,7 @@ if ($this->usermanager->isAuthenticated() and $userdata->user_is_admin) {
 <html lang="en">
   <head>
     <meta charset="utf-8" />
-    <title>Boutique <?php echo $this->configmanager->getConfig("shop_title"); ?></title>
+    <title><?php echo $this->configmanager->getConfig("shop_title"); ?></title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="<?php echo base_url(); ?>libraries/bootstrap/css/bootstrap.min.css" rel="stylesheet" media="screen">
     <link href="<?php echo base_url(); ?>style.css" rel="stylesheet" media="screen">
@@ -78,8 +78,8 @@ if ($this->usermanager->isAuthenticated() and $userdata->user_is_admin) {
     </nav>
     <div class="container">
         <div class="row"  style="height:50px">
-            <div class="col-md-5">
-                <?php echo $this->configmanager->getConfig("shop_logo"); ?>
+            <div class="col-md-5">lo 
+               <img src="<?php echo $this->configmanager->getConfig("shop_logo"); ?>" />
             </div>
             <div class="col-md-7">
                 <?php if (isset($goodError)) { ?>
