@@ -12,7 +12,7 @@
             </div>
             <div class="form-group">
                 <label>Description de la boutique</label>
-                <textarea class="form-control" rows="4"></textarea>
+                <textarea name="home_page" class="form-control" rows="4"><?php echo $this->configmanager->getConfig("home_page"); ?></textarea>
             </div>
             <button type="submit" class="btn btn-default">Modifier</button>
         </form>
