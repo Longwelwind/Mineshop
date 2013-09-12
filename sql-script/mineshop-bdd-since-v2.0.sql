@@ -87,6 +87,7 @@ CREATE TABLE IF NOT EXISTS `shp_offers_history` (
   `offer_id` int(11) NOT NULL,
   `offer_history_time` int(11) NOT NULL,
   `user_id` int(11) NOT NULL,
+  `offer_history_price` int(11) NOT NULL,
   PRIMARY KEY (`offer_history_id`)
 ) ENGINE=MyISAM  DEFAULT CHARSET=utf8;
 
