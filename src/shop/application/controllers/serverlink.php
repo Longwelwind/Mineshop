@@ -25,7 +25,6 @@ class ServerLink {
   public function command($command) {
     //return $this->phpsend->PHPcommand($command);
     $i = $this->jsonapi->call("runConsoleCommand", array($command));
-    var_dump($i);
     return $i;
   }
   

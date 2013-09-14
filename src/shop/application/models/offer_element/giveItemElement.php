@@ -31,7 +31,7 @@ class giveItemElement extends Element
   }
   
   public function getExplainString() {
-    if ($metadata > 0)
+    if ($this->metadata > 0)
       return $this->number . "x " . $this->name;
     else
       return $this->number . "x " . $this->name;
