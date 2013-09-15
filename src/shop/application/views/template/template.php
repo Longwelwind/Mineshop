@@ -29,6 +29,7 @@ if ($this->usermanager->isAuthenticated() and $userdata->user_is_admin) {
   </head>
   <body>
     <script src="http://code.jquery.com/jquery.js"></script>
+    <script src="<?php echo base_url(); ?>libraries/highcharts/js/highcharts.js"></script>
     <script src="<?php echo base_url(); ?>libraries/bootstrap/js/bootstrap.min.js"></script>
     <nav class="navbar navbar-default navbar-inverse navbar-fixed-top" role="navigation">
         <div class="navbar-header">
