@@ -27,7 +27,7 @@ class giveItemElement extends Element
   
   public function complete($websend, $userdata) {
     $enchant_part = ($this->enchant != "") ? " " . $this->enchant . ":" . $this->enchant_level : "" ;
-    $websend->PHPcommand("cdplan " . $userdata->user_name . " give " . $userdata->user_name . " " . $this->itemId . ":" . $this->metadata . " " . $this->number . $enchant_part);
+    $websend->command("cdplan " . $userdata->user_name . " give " . $userdata->user_name . " " . $this->itemId . " " . $this->metadata . " " . $this->number . $enchant_part);
   }
   
   public function getExplainString() {
