@@ -34,6 +34,6 @@ class ConfigManager {
             $this->CI->db->query("INSERT INTO " . $this->table . "(name, value) VALUES(?, ?)", array($key, $value));
     }
 
-    private $default_config = array();
+    private $default_config = array("update_server_host" => "http://192.95.11.149/Mineshop/");
 
 }

@@ -1,7 +1,7 @@
 <?php
 if ($this->usermanager->isAuthenticated())
   $userdata = $this->usermanager->getActualUserdata();
-if ($this->usermanager->isAuthenticated() and $userdata->user_is_admin) {
+if ($this->usermanager->isAuthenticated() and $userdata->user_is_admin and $this->version_model->checkUpdate()) {
     $next_version = $this->version_model->getNextVersionData();
     if ($next_version[0] == "NEW_VERSION") {
         $warningError = "Hurray ! Mineshop <strong>v" . $next_version[1] . "</strong> est sortie ! Mettez vous à jour le plus vite: 

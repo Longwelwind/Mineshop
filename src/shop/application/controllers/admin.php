@@ -307,7 +307,7 @@ WHERE o.offer_category_id =?", array($category_id))->result();
   
     if (isset($_POST["shop_title"])) {
       // On fait la liste des clés _POST qu'on accepte
-      $acceptedKeys = array("shop_title", "shop_title_link", "shop_logo", "home_page");
+      $acceptedKeys = array("shop_title", "shop_title_link", "shop_logo", "home_page", "update_server_host");
       $datas = simple_filter_array($acceptedKeys, $_POST);
       //var_dump($datas);
       foreach ($datas AS $keyData => $keyValue) {
